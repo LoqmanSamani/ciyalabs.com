@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!--
+  Ciya Labs - website
+  Layout and scroll engine based on the Machina template by TemplateMo
+  (https://templatemo.com/tm-632-machina), heavily modified.
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ciya Labs — Applied science, built into software</title>
+        <meta name="description"
+              content="Ciya Labs is an independent research lab in Germany. We apply mathematics, statistics and machine learning to build practical software, from world models for biological design to systematic trading and seller operations.">
+        <meta name="theme-color" content="#03070C">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Ciya Labs — Applied science, built into software">
+        <meta property="og:description"
+              content="Independent research lab: machine learning, computational biology and quantitative systems, turned into software we use every day.">
+        <meta property="og:image" content="assets/img/og.jpg">
+        <link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="favicon.ico" sizes="any">
+        <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon-180.png">
+        <link rel="preload" href="assets/fonts/JetBrainsMono-var.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="assets/fonts/Inter-var.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="stylesheet" href="assets/css/ciya.css">
+    </head>
+    <body>
+        <a class="skip-link" href="#main">SKIP TO CONTENT</a>
+        <!-- ============================================================ -->
+        <!-- HUD OVERLAY - fixed frame, navigation, progress              -->
+        <!-- ============================================================ -->
+        <header class="hud">
+            <div class="hud-frame" aria-hidden="true">
+                <span class="ck"></span>
+            </div>
+            <a class="hud-item hud-brand" href="#home" data-go="0" aria-label="Ciya Labs, home">
+                <img src="assets/logo/ciya-logo-horizontal-dark-duo.svg" alt="Ciya Labs" width="130" height="20">
+            </a>
+            <nav class="hud-item hud-nav" aria-label="Sections">
+                <a class="nav-btn active" href="#home" data-go="0"><span class="n">01</span><span class="l">HOME</span></a>
+                <a class="nav-btn" href="#research" data-go="1"><span class="n">02</span><span class="l">RESEARCH</span></a>
+                <a class="nav-btn" href="#products" data-go="2"><span class="n">03</span><span class="l">PRODUCTS</span></a>
+                <a class="nav-btn" href="#ventures" data-go="3"><span class="n">04</span><span class="l">VENTURES</span></a>
+                <a class="nav-btn" href="#about" data-go="4"><span class="n">05</span><span class="l">ABOUT</span></a>
+                <a class="nav-btn" href="#contact" data-go="5"><span class="n">06</span><span class="l">CONTACT</span></a>
+            </nav>
+            <div class="hud-item hud-index" aria-hidden="true">SEC <b id="hud-block">01</b> / <span id="hud-total">06</span></div>
+            <div class="hud-item hud-legal">
+                <span class="dot" aria-hidden="true"></span>
+                <span>&copy; <span class="year">2026</span> CIYA LABS</span>
+                <a href="imprint.html">IMPRINT</a>
+                <a href="privacy.html">PRIVACY</a>
+            </div>
+            <div class="hud-item hud-hint" id="hud-hint" aria-hidden="true">SCROLL TO ASCEND</div>
+            <div class="hud-item hud-arrows">
+                <button class="arrow-btn up" id="arrow-up" aria-label="Previous section" disabled>
+                    <span class="chev" aria-hidden="true"></span>
+                </button>
+                <button class="arrow-btn down" id="arrow-down" aria-label="Next section">
+                    <span class="chev" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="hud-item hud-progress" aria-hidden="true">
+                <span class="bar"><i id="hud-bar"></i></span>
+                <span id="hud-pct">000%</span>
+            </div>
+        </header>
+        <span class="seam" aria-hidden="true"></span>
+        <main class="stage" id="main">
+            <!-- ========================================================== -->
+            <!-- BLOCK 1 // HOME                                             -->
+            <!-- ========================================================== -->
+            <section class="panel t-left" data-i="0" id="home" aria-labelledby="home-title">
+                <div class="panel-inner">
+                    <p class="eyebrow reveal">Independent research lab // Germany</p>
+                    <h1 class="hero-title reveal" id="home-title">
+                        CIYA <span class="slash">//</span>
+                        <br>
+                        <span class="thin">LABS</span>
+                    </h1>
+                    <p class="lede reveal"><em>Ciya</em> is Kurdish for mountain. We climb ours with mathematics,
+                        statistics and machine learning, and with the scientific method itself, to build practical
+                        software that makes life easier.</p>
+                    <div class="clock-shell reveal" role="timer" aria-label="Local time at the lab">
+                        <span class="clock-label">LAB TIME // GERMANY</span>
+                        <span id="live-clock">00:00:00<span class="ms">.000</span></span>
+                    </div>
+                    <div class="spec-row reveal">
+                        <div class="spec-cell"><span class="k">RESEARCH</span><span class="v">03<small>LINES</small></span></div>
+                        <div class="spec-cell"><span class="k">PRODUCTS</span><span class="v">06<small>BUILDS</small></span></div>
+                        <div class="spec-cell"><span class="k">FOUNDED</span><span class="v">2026<small>DE</small></span></div>
+                    </div>
+                </div>
+            </section>
+            <section class="panel t-right panel-media" data-i="0" aria-label="Summit visual">
+                <figure class="media-frame hero">
+                    <picture>
+                        <source srcset="assets/img/hero.avif" type="image/avif">
+                        <source srcset="assets/img/hero.webp" type="image/webp">
+                        <img src="assets/img/hero.jpg"
+                             alt="Two snow-capped peaks at night, traced by a glowing wireframe, under a constellation of network nodes; a DNA helix of light winds through the valley below."
+                             width="1600" height="2000" loading="eager" fetchpriority="high">
+                    </picture>
+                    <span class="scanline" aria-hidden="true"></span>
+                    <figcaption class="media-tag">TERRAIN <b>//</b> LATENT SPACE 01</figcaption>
+                </figure>
+            </section>
+            <!-- ========================================================== -->
+            <!-- BLOCK 2 // RESEARCH                                         -->
+            <!-- ========================================================== -->
+            <section class="panel t-left" data-i="1" id="research" aria-labelledby="research-title">
+                <div class="panel-inner">
+                    <p class="eyebrow reveal">02 // Research</p>
+                    <h2 class="section-title reveal" id="research-title">RESEARCH <span class="slash">//</span> <span class="thin">LINES</span></h2>
+                    <p class="lede reveal">Open problems we work on. Every line ends in code, a report, or both, and the
+                        null results get written up too.</p>
+                    <div class="accordion reveal" id="accordion">
+                        <div class="acc-item open">
+                            <button class="acc-head" aria-expanded="true" aria-controls="acc-1" id="acc-h1">
+                                <span class="acc-index">R-01</span>
+                                <span class="acc-title">BioDreamer <small>WORLD MODELS</small></span>
+                                <span class="acc-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="acc-body" id="acc-1" role="region" aria-labelledby="acc-h1">
+                                <p>World models for biological design. JEPA-based world models and Active Inference learn
+                                    latent simulators of molecular dynamics, protein fitness landscapes and gene regulatory
+                                    networks, then plan multi-step interventions in imagination before paying for a real
+                                    experiment.</p>
+                                <div class="data-strip"><span>JEPA</span><span>ACTIVE INFERENCE</span><span>PROTEIN DESIGN</span></div>
+                                <div class="link-row">
+                                    <a class="ext" href="https://loqmansamani.github.io/bio_dreamer/" target="_blank" rel="noopener">Project</a>
+                                    <a class="ext" href="https://github.com/LoqmanSamani/bio_dreamer" target="_blank" rel="noopener">Code</a>
+                                    <a class="ext" href="https://loqmansamani.github.io/articles/model_based_rl/" target="_blank" rel="noopener">Article: World models</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="acc-item">
+                            <button class="acc-head" aria-expanded="false" aria-controls="acc-2" id="acc-h2">
+                                <span class="acc-index">R-02</span>
+                                <span class="acc-title">HydraTrade <small>SYSTEMATIC TRADING</small></span>
+                                <span class="acc-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="acc-body" id="acc-2" role="region" aria-labelledby="acc-h2">
+                                <p>Machine learning on markets, with the failures on record. Predicting the direction of the
+                                    largest coins did not work (out-of-sample AUC 0.50–0.55). Ranking a point-in-time
+                                    universe of coins against each other, market-neutral, did, and now runs unattended.
+                                    A second report shows an equity edge dissolving into survivorship bias.</p>
+                                <div class="data-strip"><span>CROSS-SECTIONAL</span><span>WALK-FORWARD</span><span>NULL RESULTS</span></div>
+                                <div class="link-row">
+                                    <a class="ext" href="https://loqmansamani.github.io/reports/crypto/" target="_blank" rel="noopener">Report I: Crypto</a>
+                                    <a class="ext" href="https://loqmansamani.github.io/reports/equities/" target="_blank" rel="noopener">Report II: Equities</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="acc-item">
+                            <button class="acc-head" aria-expanded="false" aria-controls="acc-3" id="acc-h3">
+                                <span class="acc-index">R-03</span>
+                                <span class="acc-title">Generative models <small>DIFFUSION</small></span>
+                                <span class="acc-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="acc-body" id="acc-3" role="region" aria-labelledby="acc-h3">
+                                <p>Diffusion and score-based models, from theory to tooling. TorchDiff implements DDPM,
+                                    DDIM, score-based SDEs, latent diffusion and unCLIP as reusable PyTorch parts; related
+                                    work asks what happens when diffusion models learn the wrong physics.</p>
+                                <div class="data-strip"><span>SCORE MATCHING</span><span>SDE</span><span>ENERGY-BASED</span></div>
+                                <div class="link-row">
+                                    <a class="ext" href="https://loqmansamani.github.io/torchdiff/" target="_blank" rel="noopener">TorchDiff</a>
+                                    <a class="ext" href="https://medium.com/@samaniloqman91/when-diffusion-models-learn-the-wrong-physics-fa66a8fea0f2" target="_blank" rel="noopener">Article: Wrong physics</a>
+                                    <a class="ext" href="https://medium.com/@samaniloqman91" target="_blank" rel="noopener">All writing</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="panel t-right panel-media" data-i="1" aria-label="Research scope: live visual of the selected research line">
+                <div class="scope" id="scope">
+                    <canvas id="scope-canvas" aria-hidden="true"></canvas>
+                    <span class="scope-chip" id="scope-chip">R-01 // BIODREAMER</span>
+                    <div class="scope-read" aria-live="polite">
+                        <span class="cap" id="scope-cap">IMAGINED ROLLOUTS ON A LEARNED LANDSCAPE</span>
+                        <span id="scope-data">ROLLOUTS 06 // STEP 00</span>
+                    </div>
+                </div>
+            </section>
+            <!-- ========================================================== -->
+            <!-- BLOCK 3 // PRODUCTS                                         -->
+            <!-- ========================================================== -->
+            <section class="panel t-left panel-media" data-i="2" aria-label="Operations console">
+                <div class="console">
+                    <div class="console-head">
+                        <span class="live">CONSOLE <b>//</b> IN-HOUSE SYSTEMS</span>
+                        <span>ILLUSTRATIVE FEED</span>
+                    </div>
+                    <ol class="console-log" id="console-log" aria-hidden="true"></ol>
+                    <div class="os-row">
+                        <span class="os-chip">TARGET <b>//</b> LINUX</span>
+                        <span class="os-chip">TARGET <b>//</b> MACOS</span>
+                        <span class="os-chip">TARGET <b>//</b> WINDOWS</span>
+                    </div>
+                </div>
+            </section>
+            <section class="panel t-right" data-i="2" id="products" aria-labelledby="products-title">
+                <div class="panel-inner carousel-panel">
+                    <div class="head">
+                        <p class="eyebrow reveal">03 // Products</p>
+                        <h2 class="section-title reveal" id="products-title">BUILT <span class="slash">//</span> <span class="thin">IN-HOUSE</span></h2>
+                        <p class="lede reveal">We build for our own operations first. What survives daily use gets
+                            released, for Linux, macOS and Windows.</p>
+                    </div>
+                    <div class="c3d-stage reveal" id="c3d-stage" aria-label="Rotating product cards, drag to rotate">
+                        <div class="c3d" id="c3d">
+                            <article class="c3d-card">
+                                <div class="card-face face-front">
+                                    <span class="c-id">P-01 // PLATFORM</span>
+                                    <h3 class="c-name">Biryar</h3>
+                                    <p class="c-desc">Seller cockpit: eight cooperating bots for sourcing, repricing,
+                                        forecasting and reimbursements in one decision workspace.</p>
+                                    <p class="c-fig">LIVE<small>IN-HOUSE</small></p>
+                                </div>
+                                <div class="card-face face-back" aria-hidden="true">
+                                    <span class="back-id">P-01</span>
+                                    <span class="back-bars"></span>
+                                    <span class="back-label">PUBLIC RELEASE<br>PLANNED</span>
+                                </div>
+                            </article>
+                            <article class="c3d-card">
+                                <div class="card-face face-front">
+                                    <span class="c-id">P-02 // FINANCE</span>
+                                    <h3 class="c-name">Biryar Tax</h3>
+                                    <p class="c-desc">Bookkeeping and German tax filings for sole traders. Every rule the
+                                        code applies is tied to its primary source.</p>
+                                    <p class="c-fig">LIVE<small>IN-HOUSE</small></p>
+                                </div>
+                                <div class="card-face face-back" aria-hidden="true">
+                                    <span class="back-id">P-02</span>
+                                    <span class="back-bars"></span>
+                                    <span class="back-label">PUBLIC RELEASE<br>PLANNED</span>
+                                </div>
+                            </article>
+                            <article class="c3d-card">
+                                <div class="card-face face-front">
+                                    <span class="c-id">P-03 // PRICING</span>
+                                    <h3 class="c-name">Repricer</h3>
+                                    <p class="c-desc">Reinforcement-learning price optimisation that searches for the
+                                        price ceiling of every SKU. It drafts, a human approves.</p>
+                                    <p class="c-fig">BUILT<small>IN-HOUSE</small></p>
+                                </div>
+                                <div class="card-face face-back" aria-hidden="true">
+                                    <span class="back-id">P-03</span>
+                                    <span class="back-bars"></span>
+                                    <span class="back-label">PUBLIC RELEASE<br>PLANNED</span>
+                                </div>
+                            </article>
+                            <article class="c3d-card" data-href="https://loqmansamani.github.io/reports/crypto/">
+                                <div class="card-face face-front">
+                                    <span class="c-id">P-04 // TRADING</span>
+                                    <h3 class="c-name">HydraTrade Engine</h3>
+                                    <p class="c-desc">Unattended daily service: data, ranking models, a risk layer with a
+                                        kill switch, netted execution and reconciliation.</p>
+                                    <p class="c-fig">LIVE<small>IN-HOUSE</small></p>
+                                </div>
+                                <div class="card-face face-back" aria-hidden="true">
+                                    <span class="back-id">P-04</span>
+                                    <span class="back-bars"></span>
+                                    <span class="back-label">PUBLIC RELEASE<br>UNDER REVIEW</span>
+                                </div>
+                            </article>
+                            <article class="c3d-card" data-href="https://github.com/LoqmanSamani/TorchDiff">
+                                <div class="card-face face-front">
+                                    <span class="c-id">P-05 // OPEN SOURCE</span>
+                                    <h3 class="c-name">TorchDiff</h3>
+                                    <p class="c-desc">PyTorch library for diffusion models: DDPM, DDIM, score SDEs, latent
+                                        diffusion and unCLIP.</p>
+                                    <p class="c-fig">OSS<small>PYTHON</small></p>
+                                </div>
+                                <div class="card-face face-back" aria-hidden="true">
+                                    <span class="back-id">P-05</span>
+                                    <span class="back-bars"></span>
+                                    <span class="back-label">AVAILABLE<br>ON GITHUB</span>
+                                </div>
+                            </article>
+                            <article class="c3d-card" data-href="https://github.com/LoqmanSamani/CppNet">
+                                <div class="card-face face-front">
+                                    <span class="c-id">P-06 // OPEN SOURCE</span>
+                                    <h3 class="c-name">CppNet</h3>
+                                    <p class="c-desc">C++17 deep-learning library with per-layer Eigen, OpenMP and CUDA
+                                        backends, up to 56&times; faster on GPU.</p>
+                                    <p class="c-fig">OSS<small>C++ / CUDA</small></p>
+                                </div>
+                                <div class="card-face face-back" aria-hidden="true">
+                                    <span class="back-id">P-06</span>
+                                    <span class="back-bars"></span>
+                                    <span class="back-label">AVAILABLE<br>ON GITHUB</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="c3d-deck reveal">
+                        <p class="c3d-status" id="c3d-status">P-01 <b>//</b> BIRYAR</p>
+                        <div class="c3d-controls">
+                            <button class="c3d-ctl" id="c3d-prev" aria-label="Previous product">
+                                <span class="chev-l" aria-hidden="true"></span>
+                            </button>
+                            <button class="mod-btn active" data-mod="0" aria-label="Show product 1">01</button>
+                            <button class="mod-btn" data-mod="1" aria-label="Show product 2">02</button>
+                            <button class="mod-btn" data-mod="2" aria-label="Show product 3">03</button>
+                            <button class="mod-btn" data-mod="3" aria-label="Show product 4">04</button>
+                            <button class="mod-btn" data-mod="4" aria-label="Show product 5">05</button>
+                            <button class="mod-btn" data-mod="5" aria-label="Show product 6">06</button>
+                            <button class="c3d-ctl" id="c3d-next" aria-label="Next product">
+                                <span class="chev-r" aria-hidden="true"></span>
+                            </button>
+                            <button class="c3d-ctl playing" id="c3d-play" aria-label="Pause rotation" aria-pressed="true">
+                                <span class="ico-play" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        <p class="c3d-hint">DRAG TO ROTATE <b>//</b> CLICK A CARD TO FOCUS</p>
+                    </div>
+                </div>
+            </section>
+            <!-- ========================================================== -->
+            <!-- BLOCK 4 // VENTURES                                         -->
+            <!-- ========================================================== -->
+            <section class="panel t-left" data-i="3" id="ventures" aria-labelledby="ventures-title">
+                <div class="panel-inner">
+                    <p class="eyebrow reveal">04 // Ventures</p>
+                    <h2 class="section-title reveal" id="ventures-title">OWN <span class="slash">//</span> <span class="thin">OPERATIONS</span></h2>
+                    <p class="lede reveal">We run our own businesses on our own software. They are the test bench, and
+                        they fund the research.</p>
+                    <div class="tab-rail reveal" role="tablist" aria-label="Ventures">
+                        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-panel" data-tab="samani">SAMANI VENTURES</button>
+                        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-panel" data-tab="hydra">HYDRATRADE</button>
+                    </div>
+                    <div class="tab-copy reveal" id="tab-panel" role="tabpanel">
+                        <p id="tab-copy-text">Online retail on Amazon and in our own store. Sourcing, pricing, inventory
+                            and customer support run through Biryar, and a human approves every action that moves money.</p>
+                        <div class="tab-meta" id="tab-meta">
+                            <span class="tab-chip">AMAZON</span>
+                            <span class="tab-chip">SHOPIFY</span>
+                            <span class="tab-chip">RUNS ON BIRYAR</span>
+                        </div>
+                        <div class="link-row tab-links" id="tab-links">
+                            <a class="ext" href="https://dsynq9-bg.myshopify.com/" target="_blank" rel="noopener">Visit the store</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="panel t-right panel-media" data-i="3" aria-label="Venture readout">
+                <div class="kinetic-panel">
+                    <p class="kinetic-label" id="kinetic-label">VENTURE // SAMANI VENTURES</p>
+                    <p class="kinetic-value" id="kinetic-value">08 BOTS<br>01 HUMAN</p>
+                    <p class="kinetic-sub" id="kinetic-sub"><b>BIRYAR</b> OPERATIONS PLATFORM</p>
+                </div>
+            </section>
+            <!-- ========================================================== -->
+            <!-- BLOCK 5 // ABOUT                                            -->
+            <!-- ========================================================== -->
+            <section class="panel t-left panel-media" data-i="4" aria-label="Summit detail">
+                <figure class="media-frame">
+                    <picture>
+                        <source srcset="assets/img/summit.webp" type="image/webp">
+                        <img src="assets/img/summit.jpg"
+                             alt="Close-up of the larger summit: real snow dissolving into a glowing wireframe mesh."
+                             width="1300" height="1625" loading="lazy">
+                    </picture>
+                    <figcaption class="media-tag">DETAIL <b>//</b> SUMMIT MESH</figcaption>
+                </figure>
+            </section>
+            <section class="panel t-right" data-i="4" id="about" aria-labelledby="about-title">
+                <div class="panel-inner">
+                    <p class="eyebrow reveal">05 // About</p>
+                    <h2 class="section-title reveal" id="about-title">WHY <span class="slash">//</span> <span class="thin">CIYA</span></h2>
+                    <p class="mission reveal">We apply mathematics, statistics and machine learning, from deep learning to
+                        generative AI, and science with its methods as a whole, to build useful, practical products
+                        that make life easier.</p>
+                    <ul class="interests reveal">
+                        <li><b>World models &amp; RL</b><span>Planning multi-step interventions in learned latent spaces.</span></li>
+                        <li><b>Protein design</b><span>Structure prediction, fitness landscapes, mutation planning.</span></li>
+                        <li><b>Diffusion models</b><span>Denoising, score matching and SDEs for generative biology.</span></li>
+                        <li><b>Physics-aware ML</b><span>Energy-based models that respect biomolecular constraints.</span></li>
+                        <li><b>Molecular dynamics</b><span>Learned simulators in place of brute-force integration.</span></li>
+                        <li><b>Neuro &amp; computation</b><span>Biological and artificial learning through the Free Energy Principle.</span></li>
+                    </ul>
+                    <p class="founder reveal">Founded in 2026 in Germany by <b>Loghman Samani</b>, a
+                        computational biologist (M.Sc. Computational Biology, University of Stuttgart; B.Sc. Cell and
+                        Molecular Biology) who leads the lab's research and engineering.</p>
+                    <div class="principles reveal">
+                        <span class="tab-chip">NULL RESULTS PUBLISHED</span>
+                        <span class="tab-chip">HUMANS APPROVE MONEY</span>
+                        <span class="tab-chip">REPRODUCIBLE BY DEFAULT</span>
+                    </div>
+                </div>
+            </section>
+            <!-- ========================================================== -->
+            <!-- BLOCK 6 // CONTACT                                          -->
+            <!-- ========================================================== -->
+            <section class="panel t-left" data-i="5" id="contact" aria-labelledby="contact-title">
+                <div class="panel-inner">
+                    <p class="eyebrow reveal">06 // Contact</p>
+                    <h2 class="section-title reveal" id="contact-title">OPEN <span class="slash">//</span> <span class="thin">CHANNEL</span></h2>
+                    <p class="lede reveal">A research collaboration, early access to a product, or a question about a
+                        report: write to us.</p>
+                    <ul class="channels reveal">
+                        <li><span class="k">EMAIL</span><a class="v primary" href="mailto:accounts@samaniventures.com">accounts@samaniventures.com</a></li>
+                        <li><span class="k">GITHUB</span><a class="v" href="https://github.com/LoqmanSamani" target="_blank" rel="noopener">github.com/LoqmanSamani</a></li>
+                        <li><span class="k">LINKEDIN</span><a class="v" href="https://www.linkedin.com/in/loghman-samani-8a5208199/" target="_blank" rel="noopener">Loghman Samani</a></li>
+                        <li><span class="k">WRITING</span><a class="v" href="https://medium.com/@samaniloqman91" target="_blank" rel="noopener">medium.com/@samaniloqman91</a></li>
+                        <li><span class="k">BASE</span><span class="v">Germany</span></li>
+                    </ul>
+                    <div class="legal-row reveal">
+                        <span>&copy; <span class="year">2026</span> CIYA LABS</span>
+                        <a href="imprint.html">IMPRINT</a>
+                        <a href="privacy.html">PRIVACY</a>
+                    </div>
+                </div>
+            </section>
+            <section class="panel t-right panel-media" data-i="5" aria-label="Helix detail">
+                <figure class="media-frame">
+                    <picture>
+                        <source srcset="assets/img/helix.webp" type="image/webp">
+                        <img src="assets/img/helix.jpg"
+                             alt="A double helix made of points of light winding through dark terrain."
+                             width="1040" height="1300" loading="lazy">
+                    </picture>
+                    <figcaption class="media-tag">SIGNAL <b>//</b> LISTENING</figcaption>
+                </figure>
+            </section>
+        </main>
+        <script src="assets/js/scope.js"></script>
+        <script src="assets/js/ciya.js"></script>
+    </body>
+</html>
