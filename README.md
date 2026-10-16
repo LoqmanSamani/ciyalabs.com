@@ -63,3 +63,7 @@ root). `site/` is pushed there as a git subtree:
 Done before launch (16.10.2026): hosting (GitHub Pages) in `privacy.html`, email `info@ciyalabs.com`,
 absolute `og:image`, `CNAME` = `ciyalabs.com`, imprint name "Ciya Labs" (Gewerbe-Ummeldung of
 16.10.2026), hero source photo is the owner's own.
+
+Note (16.10.2026): the first Pages deployment got stuck as "in progress" and blocked every later
+deploy ("due to in progress deployment"). Fixed by deleting the `github-pages` environment in
+Settings → Environments; Pages recreates it on the next deploy.
