@@ -53,15 +53,13 @@ Use a server: opening `index.html` as a `file://` URL works, but browsers block 
 - **Research lines:** one `.acc-item` each, matched by position to the visuals in `MODES` in
   `scope.js`. A fourth line needs a fourth visual there, or reuse an existing one.
 
-## Before going live
+## Live
 
-1. **Hosting:** enter the hosting provider's name and address in `privacy.html` (marked with a
-   TODO comment and `[hosting provider, address]`).
-2. **Email:** the contact and legal pages use `accounts@samaniventures.com`. Replace it in
-   `index.html`, `imprint.html` and `privacy.html` if Ciya Labs gets its own address.
-3. **Business name:** after the change to the business registration, check the imprint wording
-   ("Ciya Labs", owner Loghman Samani).
-4. **`og:image`:** must be an absolute URL once the domain is known, e.g.
-   `https://<domain>/assets/img/og.jpg`.
-5. **Image rights:** the hero is an AI edit of `agri/agri.avif`. Make sure you hold the rights to
-   that source photo.
+Published at https://ciyalabs.com via GitHub Pages (repo `LoqmanSamani/ciyalabs.com`, branch `main`,
+root). `site/` is pushed there as a git subtree:
+
+    git subtree push --prefix site website main
+
+Done before launch (16.10.2026): hosting (GitHub Pages) in `privacy.html`, email `info@ciyalabs.com`,
+absolute `og:image`, `CNAME` = `ciyalabs.com`, imprint name "Ciya Labs" (Gewerbe-Ummeldung of
+16.10.2026), hero source photo is the owner's own.
