@@ -1337,11 +1337,24 @@ a:focus-visible {
 }
 
 .principles {
-    margin-top: 18px;
+    margin-top: 22px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
+
+.founder a {
+    color: var(--silver);
+    border-bottom: 1px solid rgba(var(--cyan-rgb), 0.5);
+    transition: color 0.25s, border-color 0.25s;
+}
+
+.founder a:hover {
+    color: var(--cyan);
+    border-color: var(--cyan);
+}
+
+
 
 /* ---------------------------------------------------------- */
 /* BLOCK 6 // CONTACT                                          */
@@ -2204,5 +2217,39 @@ html.doc {
 
     .c3d-hint {
         display: none;
+    }
+}
+
+/* short desktop screens: the About text in fewer rows */
+@media (max-height: 820px) and (min-width: 901px) {
+    #about .mission {
+        font-size: 14.5px;
+    }
+
+    #about .interests {
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 20px;
+    }
+
+    #about .interests li:nth-child(n) {
+        padding: 11px 12px;
+        border-right: 1px solid var(--line);
+    }
+
+    #about .interests li:nth-child(3n + 1) {
+        padding-left: 0;
+    }
+
+    #about .interests li:nth-child(3n) {
+        border-right: 0;
+    }
+
+    #about .principles .tab-chip {
+        letter-spacing: 0.12em;
+        padding: 7px 10px;
+    }
+
+    #about .founder {
+        margin-top: 16px;
     }
 }
