@@ -1343,17 +1343,6 @@ a:focus-visible {
     gap: 10px;
 }
 
-.founder a {
-    color: var(--silver);
-    border-bottom: 1px solid rgba(var(--cyan-rgb), 0.5);
-    transition: color 0.25s, border-color 0.25s;
-}
-
-.founder a:hover {
-    color: var(--cyan);
-    border-color: var(--cyan);
-}
-
 
 
 /* ---------------------------------------------------------- */
