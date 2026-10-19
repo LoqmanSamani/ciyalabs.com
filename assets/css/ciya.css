@@ -445,8 +445,14 @@ a:focus-visible {
     letter-spacing: 0.12em;
 }
 
-.hero-title .dot {
-    color: var(--red);
+/* one line: CIYA // LABS */
+.hero-title.one-line {
+    font-size: clamp(2.6rem, 4.9vw, 5.2rem);
+    white-space: nowrap;
+}
+
+.hero-title.one-line .thin {
+    letter-spacing: 0.06em;
 }
 
 .clock-shell {
@@ -488,6 +494,52 @@ a:focus-visible {
     gap: 0;
     border-top: 1px solid var(--line);
     max-width: 560px;
+}
+
+.now-lines {
+    list-style: none;
+    margin: 30px 0 0;
+    padding: 0;
+    max-width: 560px;
+}
+
+.now-lines li + li {
+    border-top: 1px solid var(--line);
+}
+
+.now-lines a {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 11px 0;
+    font-family: var(--disp);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
+    transition: color 0.25s;
+}
+
+.now-lines b {
+    flex: 0 0 120px;
+    font-weight: 600;
+    color: var(--silver);
+}
+
+.now-lines a::after {
+    content: "\2192";
+    margin-left: auto;
+    color: var(--cyan);
+    letter-spacing: 0;
+    transition: transform 0.25s var(--ease-silk);
+}
+
+.now-lines a:hover {
+    color: var(--cyan);
+}
+
+.now-lines a:hover::after {
+    transform: translateX(4px);
 }
 
 .spec-cell {
@@ -2159,4 +2211,28 @@ html.doc {
 
 .doc-foot a:hover {
     color: var(--cyan);
+}
+
+@media (max-height: 760px) and (min-width: 901px) {
+    .hero-title.one-line {
+        font-size: clamp(2.4rem, 4.4vw, 4.6rem);
+    }
+
+}
+
+/* short screens: the research strip says more than the counters */
+@media (max-height: 820px) and (min-width: 901px) {
+    #home .spec-row {
+        display: none;
+    }
+
+    .now-lines {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title.one-line {
+        font-size: 2.2rem;
+    }
 }
