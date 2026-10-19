@@ -2,7 +2,7 @@
   Ciya Labs - site script
   Virtual scroll engine and widgets based on the Machina template by TemplateMo
   (https://templatemo.com/tm-632-machina), extended with: section navigation and deep links,
-  focus-follow, inner-panel scrolling, the research scope, the products console and lab time.
+  focus-follow, inner-panel scrolling, the research scope, the products carousel and lab time.
 */
 
 (function() {
@@ -582,75 +582,6 @@
     }
 
     /* ---------------------------------------------------------- */
-    /* PRODUCTS CONSOLE - illustrative feed of in-house systems    */
-    /* ---------------------------------------------------------- */
-
-    var consoleEl = document.getElementById('console-log');
-    var CONSOLE_LINES = [
-        ['biryar', 'arbitrage <b>retail scan complete</b>, candidates ranked by ROI'],
-        ['biryar', 'repricer <b>15-min cycle</b>, drafts queued for approval'],
-        ['taxes', 'vat-return <b>quarter computed</b>, dry_run=true, awaiting owner'],
-        ['hydra', 'ranker <b>00:00 UTC</b>, universe ranked, 4 sleeves netted'],
-        ['biryar', 'clawback <b>ledger reconciled</b> against reimbursements'],
-        ['hydra', 'risk <b>exposure within limits</b>, kill switch <i>armed</i>'],
-        ['ops', 'model-ops <b>shadow model evaluated</b>, promotion needs owner'],
-        ['biryar', 'forecast <b>stock-out projection</b> refreshed per SKU'],
-        ['biryar', 'support <b>buyer reply drafted</b>, human sends'],
-        ['hydra', 'exec <b>maker orders placed</b>, fills reconciled'],
-        ['taxes', 'ledger <b>bank feed imported</b>, rule register applied'],
-        ['ops', 'backup <b>daily snapshot</b> written']
-    ];
-    var MAX_LINES = 12;
-    var consoleIdx = 0;
-    var consoleTimer = null;
-
-    function consoleLine() {
-        if (!consoleEl) {
-            return;
-        }
-        var l = CONSOLE_LINES[consoleIdx % CONSOLE_LINES.length];
-        consoleIdx++;
-        var d = labNow();
-        var li = document.createElement('li');
-        li.innerHTML = '<span class="ts">' + pad(d.getHours(), 2) + ':' + pad(d.getMinutes(), 2) + ':' +
-            pad(d.getSeconds(), 2) + '</span><span class="sys">' + l[0] + '</span><span class="msg">' + l[1] + '</span>';
-        var prev = consoleEl.querySelector('.cursor');
-        if (prev) {
-            prev.classList.remove('cursor');
-        }
-        li.classList.add('cursor');
-        consoleEl.appendChild(li);
-        while (consoleEl.children.length > MAX_LINES) {
-            consoleEl.removeChild(consoleEl.firstChild);
-        }
-    }
-
-    var consoleVisible = false;
-
-    function consoleRun() {
-        var on = engineOn ? activeBlock === 2 : consoleVisible;
-        if (on && !consoleTimer && !mqReduce.matches) {
-            consoleTimer = window.setInterval(consoleLine, 1700);
-        } else if (!on && consoleTimer) {
-            window.clearInterval(consoleTimer);
-            consoleTimer = null;
-        }
-    }
-
-    if (consoleEl) {
-        for (var ci = 0; ci < 8; ci++) {
-            consoleLine();
-        }
-        onBlock(consoleRun);
-        if ('IntersectionObserver' in window) {
-            new IntersectionObserver(function(entries) {
-                consoleVisible = entries[0].isIntersecting;
-                consoleRun();
-            }).observe(consoleEl);
-        }
-    }
-
-    /* ---------------------------------------------------------- */
     /* 3D KINETIC CAROUSEL - drag, snap, controls, depth cueing    */
     /* ---------------------------------------------------------- */
 
@@ -718,7 +649,7 @@
         frontIdx = idx;
         if (c3dStatus) {
             var href = cards[idx].getAttribute('data-href');
-            c3dStatus.innerHTML = '<span>P-' + pad(idx + 1, 2) + ' <b>//</b> ' + modNames[idx] + '</span>' +
+            c3dStatus.innerHTML = '<span>' + modNames[idx] + '</span>' +
                 (href ? '<a class="ext" href="' + href + '" target="_blank" rel="noopener">Open</a>' : '');
         }
         modBtns.forEach(function(b, k) {

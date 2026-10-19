@@ -1,7 +1,7 @@
 /*
   Ciya Labs - site styles
   Built on the Machina template by TemplateMo (https://templatemo.com/tm-632-machina),
-  re-themed and extended: six blocks, HUD navigation, research scope, console, legal pages.
+  re-themed and extended: six blocks, HUD navigation, research scope, product roadmap, legal pages.
 */
 
 /* ---------------------------------------------------------- */
@@ -719,10 +719,10 @@ a:focus-visible {
 }
 
 /* ---------------------------------------------------------- */
-/* BLOCK 3 // PRODUCTS CONSOLE + 3D CAROUSEL                   */
+/* BLOCK 3 // PRODUCTS ROADMAP + 3D CAROUSEL                   */
 /* ---------------------------------------------------------- */
 
-.console {
+.roadmap {
     position: relative;
     width: 100%;
     height: 100%;
@@ -736,7 +736,7 @@ a:focus-visible {
     overflow: hidden;
 }
 
-.console-head {
+.roadmap-head {
     display: flex;
     justify-content: space-between;
     gap: 12px;
@@ -747,103 +747,117 @@ a:focus-visible {
     color: var(--dim);
     padding-bottom: 14px;
     border-bottom: 1px solid var(--line);
+    max-width: 620px;
 }
 
-.console-head b {
-    color: var(--cyan);
-    font-weight: 500;
+.roadmap-head .live {
+    color: var(--silver);
 }
 
-.console-head .live::before {
+.roadmap-head .live::before {
     content: "";
     display: inline-block;
     width: 6px;
     height: 6px;
-    margin-right: 8px;
+    margin-right: 10px;
     background: var(--red);
     vertical-align: 1px;
-    animation: hintPulse 1.8s ease-in-out infinite;
 }
 
-.console-log {
+/* vertical timeline: a rail with one node per step */
+.rm-list {
     list-style: none;
-    margin-top: 18px;
-    font-family: var(--disp);
-    font-size: 12px;
-    line-height: 1.95;
-    color: var(--dim);
-    min-height: 23.5em;
+    margin: 26px 0 0;
+    padding: 0;
+    max-width: 620px;
 }
 
-.console-log li {
+.rm-step {
+    position: relative;
     display: grid;
-    grid-template-columns: 9ch 7ch 1fr;
-    gap: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: lineIn 0.5s var(--ease-silk) both;
+    grid-template-columns: 9ch 1fr;
+    gap: 22px;
+    padding: 0 0 22px 26px;
 }
 
-.console-log .ts {
+.rm-step::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    bottom: -8px;
+    width: 1px;
+    background: var(--line);
+}
+
+.rm-step:last-child::before {
+    display: none;
+}
+
+.rm-step::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 9px;
+    height: 9px;
+    border: 1px solid rgba(var(--cyan-rgb), 0.8);
+    background: var(--panel);
+}
+
+.rm-step.is-now::after {
+    border-color: var(--red);
+    background: var(--red);
+    box-shadow: 0 0 0 0 rgba(var(--red-rgb), 0.55);
+    animation: tag-pulse 2.4s ease-out infinite;
+}
+
+.rm-when {
+    font-family: var(--disp);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--cyan);
+    padding-top: 1px;
+}
+
+.rm-step.is-now .rm-when {
+    color: var(--red);
+}
+
+.rm-body {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.rm-body b {
+    font-family: var(--disp);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--silver);
+}
+
+.rm-body span {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--dim);
+}
+
+.rm-foot {
+    max-width: 620px;
+    margin-top: 6px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    line-height: 1.6;
     color: var(--faint);
 }
 
-.console-log .sys {
-    color: var(--cyan);
-}
-
-.console-log .msg {
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.console-log .msg b {
-    color: var(--silver);
-    font-weight: 500;
-}
-
-.console-log .msg i {
-    color: var(--red);
-    font-style: normal;
-}
-
-.console-log li.cursor .msg::after {
-    content: "_";
-    color: var(--cyan);
-    animation: hintPulse 1s steps(1) infinite;
-}
-
-@keyframes lineIn {
-    from {
-        opacity: 0;
-        transform: translateX(-8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-.os-row {
-    margin-top: 26px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.os-chip {
-    font-family: var(--disp);
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    color: var(--dim);
-    border: 1px dashed rgba(228, 234, 240, 0.22);
-    padding: 7px 12px;
-}
-
-.os-chip b {
-    color: var(--cyan);
-    font-weight: 500;
+.rm-cta {
+    align-self: flex-start;
+    margin-top: 18px;
 }
 
 .carousel-panel {
@@ -928,23 +942,23 @@ a:focus-visible {
 
 .face-back .back-id {
     font-family: var(--disp);
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 500;
     letter-spacing: 0.3em;
     color: var(--cyan);
 }
 
-.face-back .back-bars {
-    width: 90px;
-    height: 30px;
-    background: repeating-linear-gradient(to right, rgba(var(--cyan-rgb), 0.55) 0 2px, transparent 2px 6px, rgba(var(--cyan-rgb), 0.3) 6px 7px, transparent 7px 12px);
+.face-back .back-rule {
+    width: 40px;
+    height: 1px;
+    background: rgba(var(--cyan-rgb), 0.6);
 }
 
 .face-back .back-label {
     font-family: var(--disp);
     font-size: 10px;
-    letter-spacing: 0.26em;
-    color: var(--faint);
+    letter-spacing: 0.22em;
+    color: var(--dim);
     text-align: center;
     line-height: 1.8;
 }
@@ -1064,23 +1078,27 @@ a:focus-visible {
     border-color: var(--red);
 }
 
+/* one dot per product: a 24px hit area around a 7px mark */
 .mod-btn {
-    min-width: 40px;
-    padding: 0 9px;
-    font-family: var(--disp);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    color: var(--dim);
+    width: 24px;
+    border: 0;
+    background: none;
 }
 
-.mod-btn:hover {
-    color: var(--silver);
-    border-color: rgba(228, 234, 240, 0.3);
+.mod-btn::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border: 1px solid rgba(228, 234, 240, 0.35);
+    transition: background 0.25s, border-color 0.25s;
 }
 
-.mod-btn.active {
-    color: var(--red);
+.mod-btn:hover::before {
+    border-color: var(--silver);
+}
+
+.mod-btn.active::before {
+    background: var(--red);
     border-color: var(--red);
 }
 
@@ -1705,9 +1723,7 @@ a:focus-visible {
 
     .scanline,
     .hud-hint,
-    .console-head .live::before,
-    .console-log li,
-    .console-log li.cursor .msg::after {
+    .rm-step.is-now::after {
         animation: none;
     }
 
@@ -1888,21 +1904,13 @@ a:focus-visible {
         min-height: 420px;
     }
 
-    .console {
+    .roadmap {
         padding: 64px 22px;
     }
 
-    .console-log {
-        font-size: 11px;
-        min-height: 0;
-    }
-
-    .console-log li {
-        grid-template-columns: 7ch 1fr;
-    }
-
-    .console-log .ts {
-        display: none;
+    .rm-step {
+        grid-template-columns: 1fr;
+        gap: 4px;
     }
 
     .kinetic-panel {
@@ -2177,5 +2185,24 @@ html.doc {
 @media (max-width: 480px) {
     .hero-title.one-line {
         font-size: 2.2rem;
+    }
+}
+
+/* short desktop screens: keep the whole carousel and its controls in view */
+@media (max-height: 760px) and (min-width: 901px) {
+    .carousel-panel {
+        gap: 12px;
+    }
+
+    .carousel-panel .lede {
+        font-size: 13px;
+    }
+
+    .c3d-stage {
+        height: 336px;
+    }
+
+    .c3d-hint {
+        display: none;
     }
 }
