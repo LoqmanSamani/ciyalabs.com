@@ -3,7 +3,7 @@
   One canvas, three live visuals, one per research line:
     0 BioDreamer    imagined rollouts on a learned energy landscape
     1 HydraTrade    cross-sectional ranking, long the top quintile, short the bottom
-    2 Diffusion     reverse diffusion from Gaussian noise to the Ciya mark
+    2 Theseus       a donor network scanned with noise and rebuilt as a copy
   Exposes window.CiyaScope = { init, set, setActive }.
 */
 
@@ -355,98 +355,138 @@
     };
 
     /* ---------------------------------------------------------- */
-    /* 2 // DIFFUSION - noise to the Ciya mark                     */
+    /* 2 // THESEUS - scan a donor network, rebuild the copy        */
     /* ---------------------------------------------------------- */
 
-    /* the logo's own geometry (logo/tools/build_kit.py) */
-    var MARK = [
-        [33.4, 45.14],
-        [58, 6],
-        [102, 76],
-        [0, 76],
-        [26.4, 34],
-        [52.8, 76]
-    ];
-
-    var diff = {
-        cap: 'REVERSE DIFFUSION // NOISE TO STRUCTURE',
+    /* donor: a small sparse network, each neuron excitatory or inhibitory (Dale's law).
+       A scan line sweeps the donor; every synapse it passes is measured with noise that
+       shrinks as the scan refines, and a few are missed for good. The copy is rebuilt from
+       those measurements, and IDENTITY is the correlation of copy and donor weights. */
+    var thes = {
+        cap: 'NOISY SCAN // RECONSTRUCTED COPY',
         start: function() {
-            var segs = [],
-                total = 0,
-                i;
-            for (i = 0; i < MARK.length - 1; i++) {
-                var l = Math.hypot(MARK[i + 1][0] - MARK[i][0], MARK[i + 1][1] - MARK[i][1]);
-                segs.push(l);
-                total += l;
-            }
-            var N = 760,
-                pts = [];
-            var scale = Math.min(W * 0.62, H * 0.9) / 102;
-            var ox = W / 2 - 51 * scale,
-                oy = H * 0.48 - 41 * scale;
-            for (i = 0; i < N; i++) {
-                var d = Math.random() * total,
-                    s = 0;
-                while (d > segs[s]) {
-                    d -= segs[s];
-                    s++;
-                }
-                var f = d / segs[s];
-                var x = MARK[s][0] + (MARK[s + 1][0] - MARK[s][0]) * f;
-                var y = MARK[s][1] + (MARK[s + 1][1] - MARK[s][1]) * f;
-                pts.push({
-                    x0: ox + x * scale + gauss() * 1.6,
-                    y0: oy + y * scale + gauss() * 1.6,
-                    red: Math.random() < 0.08
+            var n = 16,
+                nodes = [],
+                edges = [],
+                i, j;
+            for (i = 0; i < n; i++) {
+                var ang = i / n * Math.PI * 2 + gauss() * 0.12,
+                    rad = 0.55 + Math.random() * 0.45;
+                nodes.push({
+                    x: Math.cos(ang) * rad,
+                    y: Math.sin(ang) * rad,
+                    sign: Math.random() < 0.75 ? 1 : -1
                 });
             }
+            for (i = 0; i < n; i++) {
+                for (j = i + 1; j < n; j++) {
+                    if (Math.random() < 0.22) {
+                        var pre = Math.random() < 0.5 ? i : j;
+                        edges.push({
+                            a: i,
+                            b: j,
+                            w: nodes[pre].sign * (0.25 + Math.random() * 0.75),
+                            mx: (nodes[i].x + nodes[j].x) / 2,
+                            e: gauss(),
+                            miss: Math.random() < 0.1
+                        });
+                    }
+                }
+            }
             state = {
-                pts: pts,
-                t0: performance.now(),
-                cx: W / 2,
-                cy: H * 0.48,
-                sig: Math.min(W, H) * 0.3
+                nodes: nodes,
+                edges: edges,
+                donor: 1,
+                t0: performance.now()
             };
-            this.noise();
         },
-        noise: function() {
-            state.pts.forEach(function(p) {
-                p.ex = gauss();
-                p.ey = gauss();
+        net: function(cx, cy, r, weight, alpha) {
+            var st = state;
+            st.edges.forEach(function(ed) {
+                var w = weight(ed);
+                if (w === null) {
+                    return;
+                }
+                var A = st.nodes[ed.a],
+                    B = st.nodes[ed.b],
+                    m = Math.min(1, Math.abs(w));
+                ctx.strokeStyle = rgba(w >= 0 ? CY : RD, (0.18 + 0.62 * m) * alpha);
+                ctx.lineWidth = 0.6 + 1.6 * m;
+                ctx.beginPath();
+                ctx.moveTo(cx + A.x * r, cy + A.y * r);
+                ctx.lineTo(cx + B.x * r, cy + B.y * r);
+                ctx.stroke();
+            });
+            ctx.fillStyle = rgba(SV, 0.8 * alpha);
+            st.nodes.forEach(function(nd) {
+                ctx.fillRect(cx + nd.x * r - 2, cy + nd.y * r - 2, 4, 4);
             });
         },
         frame: function(now) {
             var st = state;
-            var T = reduce.matches ? 5 : ((now - st.t0) / 1000) % 8.6;
-            var t;
-            if (T < 4.6) {
-                var u = T / 4.6;
-                t = 1 - u * u * (3 - 2 * u); /* smoothstep from pure noise to data */
-            } else if (T < 6.8) {
-                t = 0;
-            } else {
-                t = (T - 6.8) / 1.8;
+            var T = reduce.matches ? 7 : (now - st.t0) / 1000;
+            if (T > 9.5) {
+                this.start();
+                st = state;
+                st.donor = (thes.count = (thes.count || 1) + 1);
+                T = 0;
             }
-            if (!reduce.matches && st.lastT !== undefined && st.lastT > 7.5 && T < 1) {
-                this.noise();
-            }
-            st.lastT = T;
-            var abar = Math.pow(Math.cos((t + 0.008) / 1.008 * Math.PI / 2), 2);
-            var a = Math.sqrt(abar),
-                b = Math.sqrt(1 - abar);
+            var scan = clamp(T / 5.5, 0, 1),
+                sig = 0.9 * Math.pow(1 - scan, 1.5) + 0.22;
             grid();
-            st.pts.forEach(function(p) {
-                var x = st.cx + a * (p.x0 - st.cx) + b * p.ex * st.sig;
-                var y = st.cy + a * (p.y0 - st.cy) + b * p.ey * st.sig;
-                ctx.fillStyle = p.red ? rgba(RD, 0.9) : rgba(CY, 0.35 + 0.55 * a);
-                ctx.fillRect(x - 1.1, y - 1.1, 2.2, 2.2);
+            var r = Math.min(W * 0.19, H * 0.3),
+                cy = H * 0.5,
+                lx = W * 0.27,
+                rx = W * 0.73;
+            var seen = function(ed) {
+                return !ed.miss && (ed.mx + 1) / 2 <= scan * 1.02;
+            };
+            this.net(lx, cy, r, function(ed) {
+                return ed.w;
+            }, 1);
+            this.net(rx, cy, r, function(ed) {
+                return seen(ed) ? ed.w + ed.e * sig : null;
+            }, 0.95);
+            /* scan line over the donor */
+            if (scan < 1) {
+                var sx = lx - r + scan * 2 * r;
+                ctx.strokeStyle = rgba(RD, 0.8);
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(sx + 0.5, cy - r - 14);
+                ctx.lineTo(sx + 0.5, cy + r + 14);
+                ctx.stroke();
+            }
+            /* arrow between donor and copy */
+            ctx.strokeStyle = rgba(SV, 0.3);
+            ctx.beginPath();
+            ctx.moveTo(W * 0.46, cy);
+            ctx.lineTo(W * 0.54, cy);
+            ctx.lineTo(W * 0.53, cy - 4);
+            ctx.moveTo(W * 0.54, cy);
+            ctx.lineTo(W * 0.53, cy + 4);
+            ctx.stroke();
+            ctx.font = '500 11px "JetBrains Mono", monospace';
+            ctx.fillStyle = rgba(SV, 0.45);
+            var lab = 'DONOR ' + pad(st.donor, 2);
+            ctx.fillText(lab, lx - ctx.measureText(lab).width / 2, cy - r - 26);
+            ctx.fillText('COPY', rx - ctx.measureText('COPY').width / 2, cy - r - 26);
+            /* identity: correlation of donor and copy weights (missed synapses count as zero) */
+            var sx2 = 0, sy = 0, sxx = 0, syy = 0, sxy = 0, k = st.edges.length;
+            st.edges.forEach(function(ed) {
+                var x = ed.w,
+                    y = seen(ed) ? ed.w + ed.e * sig : 0;
+                sx2 += x; sy += y; sxx += x * x; syy += y * y; sxy += x * y;
             });
-            var step = Math.round(t * 1000);
-            report(this.cap, 't ' + t.toFixed(2) + ' // STEP ' + pad(step, 4) + ' / 1000');
+            var cov = sxy / k - sx2 / k * sy / k,
+                vy = syy / k - sy / k * sy / k,
+                vx = sxx / k - sx2 / k * sx2 / k;
+            var id = vy > 1e-9 ? clamp(cov / Math.sqrt(vx * vy), 0, 1) : 0;
+            report(this.cap, 'SCAN ' + pad(Math.round(scan * 100), 3) + '% // IDENTITY ' + id.toFixed(2));
         }
     };
 
-    var MODES = [bio, rank, diff];
+    var MODES = [bio, rank, thes];
 
     /* ---------------------------------------------------------- */
     /* LIFECYCLE                                                   */

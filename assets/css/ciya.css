@@ -311,10 +311,31 @@ a:focus-visible {
 
 .eyebrow::before {
     content: "";
-    width: 34px;
-    height: 1px;
-    background: var(--cyan);
-    flex: 0 0 34px;
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    flex: 0 0 6px;
+}
+
+/* hero: the eyebrow as a small status tag */
+.eyebrow.tag {
+    display: inline-flex;
+    gap: 12px;
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    background: rgba(6, 12, 20, 0.6);
+    color: var(--silver);
+}
+
+.eyebrow.tag::before {
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(var(--red-rgb), 0.6);
+    animation: tag-pulse 2.4s ease-out infinite;
+}
+
+@keyframes tag-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(var(--red-rgb), 0.55); }
+    70%, 100% { box-shadow: 0 0 0 8px rgba(var(--red-rgb), 0); }
 }
 
 .lede {
@@ -406,6 +427,10 @@ a:focus-visible {
 
 .hero-title .thin {
     letter-spacing: 0.12em;
+}
+
+.hero-title .dot {
+    color: var(--red);
 }
 
 .clock-shell {
@@ -1462,11 +1487,6 @@ a:focus-visible {
     transition: color 0.2s, background 0.2s;
 }
 
-.nav-btn .n {
-    color: var(--faint);
-    transition: color 0.2s;
-}
-
 .nav-btn::after {
     content: "";
     position: absolute;
@@ -1486,10 +1506,6 @@ a:focus-visible {
 
 .nav-btn.active {
     color: var(--silver);
-}
-
-.nav-btn.active .n {
-    color: var(--red);
 }
 
 .nav-btn.active::after {
@@ -1702,8 +1718,11 @@ a:focus-visible {
 
     .acc-body,
     .kinetic-value,
+    .eyebrow.tag::before {
+        animation: none;
+    }
+
     .nav-btn,
-    .nav-btn .n,
     .nav-btn::after {
         transition: none;
     }
@@ -1714,14 +1733,9 @@ a:focus-visible {
 /* ---------------------------------------------------------- */
 
 @media (max-width: 1320px) {
-    .nav-btn .l {
-        display: none;
-    }
-
-    .nav-btn.active .l,
-    .nav-btn:hover .l,
-    .nav-btn:focus-visible .l {
-        display: inline;
+    .nav-btn {
+        padding: 9px 10px;
+        letter-spacing: 0.14em;
     }
 }
 
@@ -1938,14 +1952,6 @@ a:focus-visible {
     .nav-btn {
         padding: 0 12px;
         white-space: nowrap;
-    }
-
-    .nav-btn .l {
-        display: none;
-    }
-
-    .nav-btn.active .l {
-        display: inline;
     }
 
     .c3d-stage {

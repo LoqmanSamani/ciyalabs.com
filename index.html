@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Ciya Labs — Applied science, built into software</title>
         <meta name="description"
-              content="Ciya Labs is an independent research lab in Germany. We apply mathematics, statistics and machine learning to build practical software, from world models for biological design to systematic trading and seller operations.">
+              content="Ciya Labs is an independent research lab. We apply mathematics, statistics and machine learning to open problems in biology, chemistry and physics: world models for biological design, systematic trading and whole brain emulation.">
         <meta name="theme-color" content="#03070C">
         <meta property="og:type" content="website">
         <meta property="og:title" content="Ciya Labs — Applied science, built into software">
@@ -37,12 +37,12 @@
                 <img src="assets/logo/ciya-logo-horizontal-dark-duo.svg" alt="Ciya Labs" width="130" height="20">
             </a>
             <nav class="hud-item hud-nav" aria-label="Sections">
-                <a class="nav-btn active" href="#home" data-go="0"><span class="n">01</span><span class="l">HOME</span></a>
-                <a class="nav-btn" href="#research" data-go="1"><span class="n">02</span><span class="l">RESEARCH</span></a>
-                <a class="nav-btn" href="#products" data-go="2"><span class="n">03</span><span class="l">PRODUCTS</span></a>
-                <a class="nav-btn" href="#ventures" data-go="3"><span class="n">04</span><span class="l">VENTURES</span></a>
-                <a class="nav-btn" href="#about" data-go="4"><span class="n">05</span><span class="l">ABOUT</span></a>
-                <a class="nav-btn" href="#contact" data-go="5"><span class="n">06</span><span class="l">CONTACT</span></a>
+                <a class="nav-btn active" href="#home" data-go="0"><span class="l">HOME</span></a>
+                <a class="nav-btn" href="#research" data-go="1"><span class="l">RESEARCH</span></a>
+                <a class="nav-btn" href="#products" data-go="2"><span class="l">PRODUCTS</span></a>
+                <a class="nav-btn" href="#ventures" data-go="3"><span class="l">VENTURES</span></a>
+                <a class="nav-btn" href="#about" data-go="4"><span class="l">ABOUT</span></a>
+                <a class="nav-btn" href="#contact" data-go="5"><span class="l">CONTACT</span></a>
             </nav>
             <div class="hud-item hud-index" aria-hidden="true">SEC <b id="hud-block">01</b> / <span id="hud-total">06</span></div>
             <div class="hud-item hud-legal">
@@ -72,23 +72,23 @@
             <!-- ========================================================== -->
             <section class="panel t-left" data-i="0" id="home" aria-labelledby="home-title">
                 <div class="panel-inner">
-                    <p class="eyebrow reveal">Independent research lab // Germany</p>
+                    <p class="eyebrow tag reveal">Independent research lab</p>
                     <h1 class="hero-title reveal" id="home-title">
-                        CIYA <span class="slash">//</span>
+                        CIYA<span class="dot" aria-hidden="true">.</span>
                         <br>
                         <span class="thin">LABS</span>
                     </h1>
-                    <p class="lede reveal"><em>Ciya</em> is Kurdish for mountain. We climb ours with mathematics,
-                        statistics and machine learning, and with the scientific method itself, to build practical
-                        software that makes life easier.</p>
+                    <p class="lede reveal"><em>Ciya</em> is Kurdish for mountain. Ours are open problems in biology,
+                        chemistry and physics, and we climb them with mathematics, statistics and machine learning.
+                        Research comes first; the software follows from it.</p>
                     <div class="clock-shell reveal" role="timer" aria-label="Local time at the lab">
-                        <span class="clock-label">LAB TIME // GERMANY</span>
+                        <span class="clock-label">LAB TIME</span>
                         <span id="live-clock">00:00:00<span class="ms">.000</span></span>
                     </div>
                     <div class="spec-row reveal">
                         <div class="spec-cell"><span class="k">RESEARCH</span><span class="v">03<small>LINES</small></span></div>
                         <div class="spec-cell"><span class="k">PRODUCTS</span><span class="v">06<small>BUILDS</small></span></div>
-                        <div class="spec-cell"><span class="k">FOUNDED</span><span class="v">2026<small>DE</small></span></div>
+                        <div class="spec-cell"><span class="k">FOUNDED</span><span class="v">2026<small>EST.</small></span></div>
                     </div>
                 </div>
             </section>
@@ -110,7 +110,7 @@
             <!-- ========================================================== -->
             <section class="panel t-left" data-i="1" id="research" aria-labelledby="research-title">
                 <div class="panel-inner">
-                    <p class="eyebrow reveal">02 // Research</p>
+                    <p class="eyebrow reveal">Research</p>
                     <h2 class="section-title reveal" id="research-title">RESEARCH <span class="slash">//</span> <span class="thin">LINES</span></h2>
                     <p class="lede reveal">Open problems we work on. Every line ends in code, a report, or both, and the
                         null results get written up too.</p>
@@ -155,19 +155,16 @@
                         <div class="acc-item">
                             <button class="acc-head" aria-expanded="false" aria-controls="acc-3" id="acc-h3">
                                 <span class="acc-index">R-03</span>
-                                <span class="acc-title">Generative models <small>DIFFUSION</small></span>
+                                <span class="acc-title">Theseus <small>WHOLE BRAIN EMULATION</small></span>
                                 <span class="acc-icon" aria-hidden="true"></span>
                             </button>
                             <div class="acc-body" id="acc-3" role="region" aria-labelledby="acc-h3">
-                                <p>Diffusion and score-based models, from theory to tooling. TorchDiff implements DDPM,
-                                    DDIM, score-based SDEs, latent diffusion and unCLIP as reusable PyTorch parts; related
-                                    work asks what happens when diffusion models learn the wrong physics.</p>
-                                <div class="data-strip"><span>SCORE MATCHING</span><span>SDE</span><span>ENERGY-BASED</span></div>
-                                <div class="link-row">
-                                    <a class="ext" href="https://loqmansamani.github.io/torchdiff/" target="_blank" rel="noopener">TorchDiff</a>
-                                    <a class="ext" href="https://medium.com/@samaniloqman91/when-diffusion-models-learn-the-wrong-physics-fa66a8fea0f2" target="_blank" rel="noopener">Article: Wrong physics</a>
-                                    <a class="ext" href="https://medium.com/@samaniloqman91" target="_blank" rel="noopener">All writing</a>
-                                </div>
+                                <p>How much of a mind survives the scan? Whole brain emulation as a machine-learning
+                                    inverse problem: reconstruct one specific individual's neural network from incomplete,
+                                    noisy measurements, then test whether the copy is still that individual. Simulated
+                                    donors first, then real connectome and whole-brain imaging data from <i>C. elegans</i>
+                                    and the fruit fly.</p>
+                                <div class="data-strip"><span>INVERSE PROBLEMS</span><span>CONNECTOMICS</span><span>SYSTEM IDENTIFICATION</span></div>
                             </div>
                         </div>
                     </div>
@@ -203,7 +200,7 @@
             <section class="panel t-right" data-i="2" id="products" aria-labelledby="products-title">
                 <div class="panel-inner carousel-panel">
                     <div class="head">
-                        <p class="eyebrow reveal">03 // Products</p>
+                        <p class="eyebrow reveal">Products</p>
                         <h2 class="section-title reveal" id="products-title">BUILT <span class="slash">//</span> <span class="thin">IN-HOUSE</span></h2>
                         <p class="lede reveal">We build for our own operations first. What survives daily use gets
                             released, for Linux, macOS and Windows.</p>
@@ -324,7 +321,7 @@
             <!-- ========================================================== -->
             <section class="panel t-left" data-i="3" id="ventures" aria-labelledby="ventures-title">
                 <div class="panel-inner">
-                    <p class="eyebrow reveal">04 // Ventures</p>
+                    <p class="eyebrow reveal">Ventures</p>
                     <h2 class="section-title reveal" id="ventures-title">OWN <span class="slash">//</span> <span class="thin">OPERATIONS</span></h2>
                     <p class="lede reveal">We run our own businesses on our own software. They are the test bench, and
                         they fund the research.</p>
@@ -369,7 +366,7 @@
             </section>
             <section class="panel t-right" data-i="4" id="about" aria-labelledby="about-title">
                 <div class="panel-inner">
-                    <p class="eyebrow reveal">05 // About</p>
+                    <p class="eyebrow reveal">About</p>
                     <h2 class="section-title reveal" id="about-title">WHY <span class="slash">//</span> <span class="thin">CIYA</span></h2>
                     <p class="mission reveal">We apply mathematics, statistics and machine learning, from deep learning to
                         generative AI, and science with its methods as a whole, to build useful, practical products
@@ -382,7 +379,7 @@
                         <li><b>Molecular dynamics</b><span>Learned simulators in place of brute-force integration.</span></li>
                         <li><b>Neuro &amp; computation</b><span>Biological and artificial learning through the Free Energy Principle.</span></li>
                     </ul>
-                    <p class="founder reveal">Founded in 2026 in Germany by <b>Loghman Samani</b>, a
+                    <p class="founder reveal">Founded in 2026 by <b>Loghman Samani</b>, a
                         computational biologist (M.Sc. Computational Biology, University of Stuttgart; B.Sc. Cell and
                         Molecular Biology) who leads the lab's research and engineering.</p>
                     <div class="principles reveal">
@@ -397,7 +394,7 @@
             <!-- ========================================================== -->
             <section class="panel t-left" data-i="5" id="contact" aria-labelledby="contact-title">
                 <div class="panel-inner">
-                    <p class="eyebrow reveal">06 // Contact</p>
+                    <p class="eyebrow reveal">Contact</p>
                     <h2 class="section-title reveal" id="contact-title">OPEN <span class="slash">//</span> <span class="thin">CHANNEL</span></h2>
                     <p class="lede reveal">A research collaboration, early access to a product, or a question about a
                         report: write to us.</p>
@@ -406,7 +403,6 @@
                         <li><span class="k">GITHUB</span><a class="v" href="https://github.com/LoqmanSamani" target="_blank" rel="noopener">github.com/LoqmanSamani</a></li>
                         <li><span class="k">LINKEDIN</span><a class="v" href="https://www.linkedin.com/in/loghman-samani-8a5208199/" target="_blank" rel="noopener">Loghman Samani</a></li>
                         <li><span class="k">WRITING</span><a class="v" href="https://medium.com/@samaniloqman91" target="_blank" rel="noopener">medium.com/@samaniloqman91</a></li>
-                        <li><span class="k">BASE</span><span class="v">Germany</span></li>
                     </ul>
                     <div class="legal-row reveal">
                         <span>&copy; <span class="year">2026</span> CIYA LABS</span>

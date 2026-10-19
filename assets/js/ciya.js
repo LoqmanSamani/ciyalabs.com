@@ -97,6 +97,14 @@
             btn.classList.toggle('active', on);
             if (on) {
                 btn.setAttribute('aria-current', 'true');
+                /* on narrow screens the nav scrolls sideways: keep the active label in view */
+                var nav = btn.parentNode;
+                if (nav && nav.scrollWidth > nav.clientWidth) {
+                    nav.scrollTo({
+                        left: btn.offsetLeft - (nav.clientWidth - btn.offsetWidth) / 2,
+                        behavior: mqReduce.matches ? 'auto' : 'smooth'
+                    });
+                }
             } else {
                 btn.removeAttribute('aria-current');
             }
@@ -491,7 +499,7 @@
     var scopeCap = document.getElementById('scope-cap');
     var scopeData = document.getElementById('scope-data');
     var blipTimer = null;
-    var scopeNames = ['R-01 // BIODREAMER', 'R-02 // HYDRATRADE', 'R-03 // DIFFUSION'];
+    var scopeNames = ['R-01 // BIODREAMER', 'R-02 // HYDRATRADE', 'R-03 // THESEUS'];
     var scopeVisible = false;
 
     if (window.CiyaScope && scopeCanvas) {
