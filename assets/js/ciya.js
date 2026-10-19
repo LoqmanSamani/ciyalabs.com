@@ -556,16 +556,6 @@
         });
     }
 
-    /* home-page shortcuts open their research line */
-    Array.prototype.forEach.call(document.querySelectorAll('[data-open]'), function(link) {
-        link.addEventListener('click', function() {
-            var item = accItems[parseInt(link.getAttribute('data-open'), 10)];
-            if (item && !item.classList.contains('open')) {
-                item.querySelector('.acc-head').click();
-            }
-        });
-    });
-
     accItems.forEach(function(item, idx) {
         var head = item.querySelector('.acc-head');
         head.addEventListener('click', function() {

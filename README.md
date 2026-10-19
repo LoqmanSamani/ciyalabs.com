@@ -60,6 +60,9 @@ root). `site/` is pushed there as a git subtree:
 
     git subtree push --prefix site website main
 
+After changing CSS or JS, bump the `?v=` tag on `ciya.css`, `scope.js` and `ciya.js` in all three
+HTML files, otherwise browsers keep the cached old files.
+
 Done before launch (16.10.2026): hosting (GitHub Pages) in `privacy.html`, email `info@ciyalabs.com`,
 absolute `og:image`, `CNAME` = `ciyalabs.com`, imprint name "Ciya Labs" (Gewerbe-Ummeldung of
 16.10.2026), hero source photo is the owner's own.
