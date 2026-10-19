@@ -499,7 +499,8 @@
     var scopeCap = document.getElementById('scope-cap');
     var scopeData = document.getElementById('scope-data');
     var blipTimer = null;
-    var scopeNames = ['R-01 // BIODREAMER', 'R-02 // HYDRATRADE', 'R-03 // THESEUS'];
+    /* scope mode 0 is the lab itself (nothing open); research line k is mode k + 1 */
+    var scopeNames = ['CIYA LABS', 'BIODREAMER', 'HYDRATRADE', 'THESEUS'];
     var scopeVisible = false;
 
     if (window.CiyaScope && scopeCanvas) {
@@ -566,7 +567,9 @@
             if (!wasOpen) {
                 item.classList.add('open');
                 head.setAttribute('aria-expanded', 'true');
-                setScope(idx);
+                setScope(idx + 1);
+            } else {
+                setScope(0);
             }
             setAccHeights();
         });

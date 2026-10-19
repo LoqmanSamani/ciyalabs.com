@@ -406,6 +406,22 @@ a:focus-visible {
     background: rgba(var(--red-rgb), 0.06);
 }
 
+.ext.is-soon {
+    color: var(--faint);
+    border-style: dashed;
+    cursor: default;
+}
+
+.ext.is-soon::after {
+    content: none;
+}
+
+.ext.is-soon:hover {
+    color: var(--faint);
+    border-color: var(--line);
+    background: none;
+}
+
 .ext:hover::after {
     color: var(--red);
     transform: translate(2px, -2px);
@@ -539,19 +555,6 @@ a:focus-visible {
     padding: 18px 18px;
 }
 
-.acc-index {
-    font-family: var(--disp);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    color: var(--faint);
-    transition: color 0.3s;
-}
-
-.acc-item.open .acc-index {
-    color: var(--red);
-}
-
 .acc-title {
     flex: 1;
     display: flex;
@@ -621,7 +624,7 @@ a:focus-visible {
 }
 
 .acc-body p {
-    padding: 0 18px 16px 49px;
+    padding: 0 18px 16px 18px;
     color: var(--dim);
     font-size: 13.5px;
     line-height: 1.75;
@@ -631,7 +634,7 @@ a:focus-visible {
     display: flex;
     flex-wrap: wrap;
     gap: 8px 22px;
-    padding: 0 18px 16px 49px;
+    padding: 0 18px 16px 18px;
     font-family: var(--disp);
     font-size: 10.5px;
     letter-spacing: 0.16em;
@@ -639,7 +642,7 @@ a:focus-visible {
 }
 
 .acc-body .link-row {
-    padding: 0 18px 20px 49px;
+    padding: 0 18px 20px 18px;
 }
 
 /* research scope - a live visual per research line */
