@@ -819,7 +819,7 @@
             copy: 'A market-neutral crypto book that ranks a point-in-time universe of coins every day and trades the extremes unattended, behind a risk layer with a global kill switch.',
             chips: ['4 SLEEVES', 'MARKET-NEUTRAL', 'UNATTENDED'],
             links: [
-                ['Read the report', 'https://loqmansamani.github.io/reports/crypto/']
+                ['Read the report', 'https://hydratrade.ciyalabs.com/i/']
             ]
         }
     };
